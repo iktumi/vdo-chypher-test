@@ -1,0 +1,35 @@
+{
+  "name": "cordova-vdo-cypher-test",
+  "version": "0.0.1",
+  "description": "An Android Cordova plugin for testing vdo-cypher android.",
+  "cordova": {
+    "id": "cordova-vdo-cypher-test",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iktumi/vdo-chypher-test.git"
+  },
+  "keywords": [
+    "Toast",
+    "Notification",
+    "Message",
+    "Alert",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Stanley Idesis <stan.idesis@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iktumi/issues"
+  },
+  "homepage": "https://github.com/iktumi/"
+}

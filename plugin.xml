@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-vdo-cypher-test" version="0.0.1">
+    <name>vdo-cypher-test</name>
+
+    <description>An Android Cordova plugin for testing vdo-cypher android.</description>
+    <license>MIT</license>
+
+    <keywords>cordova,android,toast,message,alert</keywords>
+    <repo>https://github.com/iktumi/vdo-chypher-test.git</repo>
+    <issue>https://github.com/iktumi/issues</issue>
+  
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+  
+    <js-module src="www/vdocypher.js" name="vdocypher">
+        <clobbers target="window.plugins.vdocypher" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="VdoCypherTest">
+                <param name="android-package" value="com.osquay.vdocyphertest.VdoCypherTest"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/VdoCypherTest.java" target-dir="src/com/osquay/cordova/plugin" />
+    </platform>
+</plugin>
