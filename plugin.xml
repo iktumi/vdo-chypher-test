@@ -25,7 +25,7 @@
     </js-module>
 
     <platform name="android">
-         <hook type="after_plugin_install" src="scripts/addResourcesClassToImport.js" />
+         <!--<hook type="after_plugin_install" src="scripts/addResourcesClassToImport.js" />-->
 		 <framework src="build-extras.gradle" custom="true" type="gradleReference" />
 
 
