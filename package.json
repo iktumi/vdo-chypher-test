@@ -26,10 +26,10 @@
       "version": ">=3.0.0"
     }
   ],
-  "author": "Stanley Idesis <stan.idesis@gmail.com>",
+  "author": "SPN",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iktumi/issues"
+    "url": "https://github.com/iktumi/vdo-chypher-test/issues"
   },
-  "homepage": "https://github.com/iktumi/"
+  "homepage": "https://github.com/iktumi/vdo-chypher-test"
 }

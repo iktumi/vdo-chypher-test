@@ -1,0 +1,18 @@
+// Required for Android Support Library 26.0.0+ and Google Play services 11.+
+repositories {
+  maven { url 'https://github.com/VdoCipher/maven-repo/raw/master/repo' }
+}
+ 
+dependencies { 
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.vdocipher.aegis:vdocipher-android:1.6.0'
+    implementation 'com.vdocipher.aegis:vdocipher-cast:1.6.0'
+    implementation 'com.google.android.gms:play-services-cast-framework:16.2.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+	 
+	
+}
+

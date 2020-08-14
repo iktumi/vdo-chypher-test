@@ -9,8 +9,10 @@
 
     <keywords>cordova,android,toast,message,alert</keywords>
     <repo>https://github.com/iktumi/vdo-chypher-test.git</repo>
-    <issue>https://github.com/iktumi/issues</issue>
-  
+    <issue>https://github.com/iktumi/vdo-chypher-test/issues</issue>
+
+    <dependency id="cordova-plugin-androidx"  />
+	
     <engines>
         <engine name="cordova" version=">=3.0.0"/>
     </engines>
@@ -18,13 +20,82 @@
     <js-module src="www/vdocypher.js" name="vdocypher">
         <clobbers target="window.plugins.vdocypher" />
     </js-module>
+    <js-module src="www/PluginName.js" name="pluginname">
+        <clobbers target="window.plugins.pluginName" />
+    </js-module>
+
     <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="VdoCypherTest">
-                <param name="android-package" value="com.osquay.vdocyphertest.VdoCypherTest"/>
+         <hook type="after_plugin_install" src="scripts/addResourcesClassToImport.js" />
+		 <framework src="build-extras.gradle" custom="true" type="gradleReference" />
+
+
+		<config-file target="res/xml/config.xml" parent="/*" >
+            <feature name="PluginName">
+                <param name="android-package" value="com.vdocipher.sampleapp.castdemo.PluginName" />
             </feature>
         </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:label="Cast Activity" android:name="com.vdocipher.sampleapp.castdemo.CastVdoPlayerActivity"></activity>
+            <activity android:label="MainActivity Activity" android:name="com.vdocipher.sampleapp.castdemo.MainActivity"></activity>
+        </config-file>
+        <source-file src="src/android/PluginName.java" target-dir="src/com/vdocipher/sampleapp/plugin" />
+        <source-file src="src/android/NewActivity.java" target-dir="src/com/example/sample/plugin" />
 
-        <source-file src="src/android/VdoCypherTest.java" target-dir="src/com/osquay/cordova/plugin" />
+        <source-file src="src/android/com/vdocipher/sampleapp/castdemo/Utils.java" target-dir="src/com/vdocipher/sampleapp/castdemo" />
+        <source-file src="src/android/com/vdocipher/sampleapp/castdemo/MainActivity.java" target-dir="src/com/vdocipher/sampleapp/castdemo" />
+        <source-file src="src/android/com/vdocipher/sampleapp/castdemo/VdoPlayerControlView.java" target-dir="src/com/vdocipher/sampleapp/castdemo" />
+        <source-file src="src/android/com/vdocipher/sampleapp/castdemo/CastVdoPlayerActivity.java" target-dir="src/com/vdocipher/sampleapp/castdemo" />
+
+
+        <source-file src="src/android/activity_new.xml" target-dir="res/layout"/>
+        <source-file src="res/android/layout/activity_cast_player.xml" target-dir="res/layout"/>
+        <source-file src="res/android/layout/activity_main.xml" target-dir="res/layout"/>
+        <source-file src="res/android/layout/vdo_control_view.xml" target-dir="res/layout"/>
+        <source-file src="res/android/values/stringsExtra.xml" target-dir="res/values"/>
+        <source-file src="res/android/values/styles.xml" target-dir="res/values"/>
+        <source-file src="res/android/values/colors.xml" target-dir="res/values"/>
+        <source-file src="res/android/values/dimens.xml" target-dir="res/values"/>
+        <source-file src="res/android/menu/cast_menu.xml" target-dir="res/menu"/>
+
+
+
+        <source-file src="res/android/drawable-hdpi/ic_error_white_36dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_error_white_36dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_error_white_36dp.png"  target-dir="res/drawable-xhdpi" />
+
+        <source-file src="res/android/drawable-hdpi/ic_replay_10_white_24dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_replay_10_white_24dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_replay_10_white_24dp.png"  target-dir="res/drawable-xhdpi" />
+
+        <source-file src="res/android/drawable-hdpi/ic_play_arrow_white_24dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_play_arrow_white_24dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_play_arrow_white_24dp.png"  target-dir="res/drawable-xhdpi" />
+
+        <source-file src="res/android/drawable-hdpi/ic_pause_white_24dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_pause_white_24dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_pause_white_24dp.png"  target-dir="res/drawable-xhdpi" />
+
+        <source-file src="res/android/drawable-hdpi/ic_forward_10_white_24dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_forward_10_white_24dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_forward_10_white_24dp.png"  target-dir="res/drawable-xhdpi" />
+
+        <source-file src="res/android/drawable-hdpi/ic_closed_caption_white_24dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_closed_caption_white_24dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_closed_caption_white_24dp.png"  target-dir="res/drawable-xhdpi" />
+
+        <source-file src="res/android/drawable-hdpi/ic_high_quality_white_24dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_high_quality_white_24dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_high_quality_white_24dp.png"  target-dir="res/drawable-xhdpi" />
+
+        <source-file src="res/android/drawable-hdpi/ic_fullscreen_white_24dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_fullscreen_white_24dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_fullscreen_white_24dp.png"  target-dir="res/drawable-xhdpi" />
+
+        <source-file src="res/android/drawable-hdpi/ic_fullscreen_exit_white_24dp.png"   target-dir="res/drawable-hdpi" />
+        <source-file src="res/android/drawable-mdpi/ic_fullscreen_exit_white_24dp.png"   target-dir="res/drawable-mdpi" />
+        <source-file src="res/android/drawable-xhdpi/ic_fullscreen_exit_white_24dp.png"  target-dir="res/drawable-xhdpi" />
+
+
+
     </platform>
 </plugin>
