@@ -2,8 +2,7 @@ package com.vdocipher.sampleapp.castdemo;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import androidx.annotation.Nullable;
+import android.content.DialogInterface; 
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -81,7 +80,7 @@ public class VdoPlayerControlView extends FrameLayout {
     private boolean fullscreen;
     private boolean castMode;
 
-    private @Nullable VdoPlayer player;
+    private VdoPlayer player;
     private final UiListener uiListener;
     private VdoPlayer.VdoInitParams lastErrorParams;
     private FullscreenActionListener fullscreenActionListener;
