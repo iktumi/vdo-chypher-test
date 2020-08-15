@@ -5,7 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
+import android.os.Bundle; 
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -19,7 +19,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.cast.framework.CastButtonFactory;
 import com.google.android.gms.cast.framework.CastContext;
 import com.vdocipher.aegis.cast.CastSessionAvailabilityListener;
 import com.vdocipher.aegis.cast.CastVdoPlayer;
@@ -28,8 +27,7 @@ import com.vdocipher.aegis.media.Track;
 import com.vdocipher.aegis.player.VdoPlayer;
 import com.vdocipher.aegis.player.VdoPlayer.VdoInitParams;
 import com.vdocipher.aegis.player.VdoPlayerFragment;
-import com.vdocipher.aegis.player.VdoPlayerSupportFragment;
-import android.R;
+
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -51,9 +49,9 @@ public class CastVdoPlayerActivity extends Activity
 
     private long initTimeMs = 0;
 
-    private   VdoPlayer localPlayer;
+    private  VdoPlayer localPlayer;
     private  CastVdoPlayer castPlayer;
-    private   VdoPlayer currentPlayer;
+    private  VdoPlayer currentPlayer;
 
     private CastContext castContext;
 
@@ -64,15 +62,15 @@ public class CastVdoPlayerActivity extends Activity
 
         castContext = CastContext.getSharedInstance(this);
 
-        setContentView(R.layout.activity_cast_player);
+        setContentView(getResources().getIdentifier("activity_cast_player","layout",MainActivity.PACKAGE_NAME));
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(uiVisibilityListener);
 
         initParams = getIntent().getParcelableExtra("initParams");
 
-        playerFragment = (VdoPlayerFragment)getFragmentManager().findFragmentById(R.id.online_vdo_player_fragment);
-        playerControlView = findViewById(R.id.player_control_view);
-        eventLog = findViewById(R.id.event_log);
+        playerFragment = (VdoPlayerFragment)getFragmentManager().findFragmentById(getResources().getIdentifier("online_vdo_player_fragment","id",MainActivity.PACKAGE_NAME));
+        playerControlView = findViewById(getResources().getIdentifier("player_control_view","id",MainActivity.PACKAGE_NAME));
+        eventLog = findViewById(getResources().getIdentifier("event_log","id",MainActivity.PACKAGE_NAME));
         eventLog.setMovementMethod(ScrollingMovementMethod.getInstance());
         showControls(false);
 
@@ -103,10 +101,7 @@ public class CastVdoPlayerActivity extends Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.cast_menu, menu);
-        CastButtonFactory.setUpMediaRouteButton(getApplicationContext(),
-                menu,
-                R.id.media_route_menu_item);
+
         return true;
     }
 
@@ -123,9 +118,9 @@ public class CastVdoPlayerActivity extends Activity
             Log.i(TAG, "orientation unchanged");
         } else if (newOrientation == Configuration.ORIENTATION_LANDSCAPE) {
             // hide other views
-            (findViewById(R.id.title_text)).setVisibility(View.GONE);
-            (findViewById(R.id.log_container)).setVisibility(View.GONE);
-            (findViewById(R.id.online_vdo_player_fragment)).setLayoutParams(new RelativeLayout.LayoutParams(
+            (findViewById(getResources().getIdentifier("title_text","id",MainActivity.PACKAGE_NAME))).setVisibility(View.GONE);
+            (findViewById(getResources().getIdentifier("log_container","id",MainActivity.PACKAGE_NAME))).setVisibility(View.GONE);
+            (findViewById(getResources().getIdentifier("online_vdo_player_fragment","id",MainActivity.PACKAGE_NAME))).setLayoutParams(new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
             playerControlView.setFitsSystemWindows(true);
             // hide system windows
@@ -133,9 +128,9 @@ public class CastVdoPlayerActivity extends Activity
             showControls(false);
         } else {
             // show other views
-            (findViewById(R.id.title_text)).setVisibility(View.VISIBLE);
-            (findViewById(R.id.log_container)).setVisibility(View.VISIBLE);
-            (findViewById(R.id.online_vdo_player_fragment)).setLayoutParams(new RelativeLayout.LayoutParams(
+            (findViewById(getResources().getIdentifier("title_text","id",MainActivity.PACKAGE_NAME))).setVisibility(View.VISIBLE);
+            (findViewById(getResources().getIdentifier("log_container","id",MainActivity.PACKAGE_NAME))).setVisibility(View.VISIBLE);
+            (findViewById(getResources().getIdentifier("online_vdo_player_fragment","id",MainActivity.PACKAGE_NAME))).setLayoutParams(new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
             playerControlView.setFitsSystemWindows(false);
             playerControlView.setPadding(0,0,0,0);
@@ -273,7 +268,7 @@ public class CastVdoPlayerActivity extends Activity
         }
     };
 
-    private void setCurrentPlayer(  VdoPlayer newPlayer) {
+    private void setCurrentPlayer( VdoPlayer newPlayer) {
         if (currentPlayer == newPlayer) {
             return;
         }

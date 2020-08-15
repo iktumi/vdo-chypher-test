@@ -24,7 +24,6 @@ import com.vdocipher.aegis.player.VdoPlayer;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import android.R;
 
 /**
  * A view for controlling playback via a VdoPlayer.
@@ -81,7 +80,7 @@ public class VdoPlayerControlView extends FrameLayout {
     private boolean fullscreen;
     private boolean castMode;
 
-    private VdoPlayer player;
+    private  VdoPlayer player;
     private final UiListener uiListener;
     private VdoPlayer.VdoInitParams lastErrorParams;
     private FullscreenActionListener fullscreenActionListener;
@@ -116,45 +115,45 @@ public class VdoPlayerControlView extends FrameLayout {
 
         uiListener = new UiListener();
 
-        LayoutInflater.from(context).inflate(R.layout.vdo_control_view, this);
+        LayoutInflater.from(context).inflate(getResources().getIdentifier("vdo_control_view","layout",MainActivity.PACKAGE_NAME), this);
 
-        playButton = findViewById(R.id.vdo_play);
+        playButton = findViewById(getResources().getIdentifier("vdo_play","id",MainActivity.PACKAGE_NAME));
         playButton.setOnClickListener(uiListener);
-        pauseButton = findViewById(R.id.vdo_pause);
+        pauseButton = findViewById(getResources().getIdentifier("vdo_pause","id",MainActivity.PACKAGE_NAME));
         pauseButton.setOnClickListener(uiListener);
         pauseButton.setVisibility(GONE);
-        fastForwardButton = findViewById(R.id.vdo_ffwd);
+        fastForwardButton = findViewById(getResources().getIdentifier("vdo_ffwd","id",MainActivity.PACKAGE_NAME));
         fastForwardButton.setOnClickListener(uiListener);
-        rewindButton = findViewById(R.id.vdo_rewind);
+        rewindButton = findViewById(getResources().getIdentifier("vdo_rewind","id",MainActivity.PACKAGE_NAME));
         rewindButton.setOnClickListener(uiListener);
-        durationView = findViewById(R.id.vdo_duration);
-        positionView = findViewById(R.id.vdo_position);
-        seekBar = findViewById(R.id.vdo_seekbar);
+        durationView = findViewById(getResources().getIdentifier("vdo_duration","id",MainActivity.PACKAGE_NAME));
+        positionView = findViewById(getResources().getIdentifier("vdo_position","id",MainActivity.PACKAGE_NAME));
+        seekBar = findViewById(getResources().getIdentifier("vdo_seekbar","id",MainActivity.PACKAGE_NAME));
         seekBar.setOnSeekBarChangeListener(uiListener);
-        speedControlButton = findViewById(R.id.vdo_speed);
+        speedControlButton = findViewById(getResources().getIdentifier("vdo_speed","id",MainActivity.PACKAGE_NAME));
         speedControlButton.setOnClickListener(uiListener);
-        captionsButton = findViewById(R.id.vdo_captions);
+        captionsButton = findViewById(getResources().getIdentifier("vdo_captions","id",MainActivity.PACKAGE_NAME));
         captionsButton.setOnClickListener(uiListener);
-        qualityButton = findViewById(R.id.vdo_quality);
+        qualityButton = findViewById(getResources().getIdentifier("vdo_quality","id",MainActivity.PACKAGE_NAME));
         qualityButton.setOnClickListener(uiListener);
-        enterFullscreenButton = findViewById(R.id.vdo_enter_fullscreen);
+        enterFullscreenButton = findViewById(getResources().getIdentifier("vdo_enter_fullscreen","id",MainActivity.PACKAGE_NAME));
         enterFullscreenButton.setOnClickListener(uiListener);
         enterFullscreenButton.setVisibility(GONE);
-        exitFullscreenButton = findViewById(R.id.vdo_exit_fullscreen);
+        exitFullscreenButton = findViewById(getResources().getIdentifier("vdo_exit_fullscreen","id",MainActivity.PACKAGE_NAME));
         exitFullscreenButton.setOnClickListener(uiListener);
         exitFullscreenButton.setVisibility(GONE);
-        loaderView = findViewById(R.id.vdo_loader);
+        loaderView = findViewById(getResources().getIdentifier("vdo_loader","id",MainActivity.PACKAGE_NAME));
         loaderView.setVisibility(GONE);
-        errorView = findViewById(R.id.vdo_error);
+        errorView = findViewById(getResources().getIdentifier("vdo_error","id",MainActivity.PACKAGE_NAME));
         errorView.setOnClickListener(uiListener);
         errorView.setVisibility(GONE);
-        errorTextView = findViewById(R.id.vdo_error_text);
+        errorTextView = findViewById(getResources().getIdentifier("vdo_error_text","id",MainActivity.PACKAGE_NAME));
         errorTextView.setOnClickListener(uiListener);
         errorTextView.setVisibility(GONE);
-        castInfoView = findViewById(R.id.cast_info_text);
+        castInfoView = findViewById(getResources().getIdentifier("cast_info_text","id",MainActivity.PACKAGE_NAME));
         castInfoView.setVisibility(GONE);
-        controlPanel = findViewById(R.id.vdo_control_panel);
-        controllerBackground = findViewById(R.id.vdo_controller_bg);
+        controlPanel = findViewById(getResources().getIdentifier("vdo_control_panel","id",MainActivity.PACKAGE_NAME));
+        controllerBackground = findViewById(getResources().getIdentifier("vdo_controller_bg","id",MainActivity.PACKAGE_NAME));
         setOnClickListener(uiListener);
     }
 
@@ -398,7 +397,7 @@ public class VdoPlayerControlView extends FrameLayout {
 
     private void showSelectionDialog(CharSequence title, final TrackHolder[] trackHolders, final int selectedTrackIndex) {
         ListAdapter adapter = new ArrayAdapter<>(getContext(),
-                android.R.layout.simple_list_item_single_choice, trackHolders);
+                getResources().getIdentifier("simple_list_item_single_choice","layout",MainActivity.PACKAGE_NAME), trackHolders);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle(title)
                 .setSingleChoiceItems(adapter, selectedTrackIndex, new DialogInterface.OnClickListener() {

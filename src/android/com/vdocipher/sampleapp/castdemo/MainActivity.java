@@ -1,7 +1,7 @@
 package com.vdocipher.sampleapp.castdemo;
 
 import android.app.Activity;
-import android.content.Intent; 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.google.android.gms.cast.framework.CastButtonFactory;
 import com.google.android.gms.cast.framework.CastContext;
 import com.vdocipher.aegis.player.VdoPlayer;
-import android.R;
 
 import org.json.JSONException;
 
@@ -24,6 +23,8 @@ public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
 
+    public static String PACKAGE_NAME;
+
     private TextView loadInfo;
     private Button playerButton;
     private VdoPlayer.VdoInitParams initParams;
@@ -32,13 +33,15 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        PACKAGE_NAME = getApplicationContext().getPackageName();
+
         CastContext.getSharedInstance(this);
 
-        setContentView(R.layout.activity_main);
+        setContentView(getResources().getIdentifier("activity_main","layout",MainActivity.PACKAGE_NAME));
 
-        loadInfo = findViewById(R.id.params_loader_info);
-        loadInfo.setText(R.string.load_active_msg);
-        playerButton = findViewById(R.id.player_btn);
+        loadInfo = findViewById(getResources().getIdentifier("params_loader_info","id",MainActivity.PACKAGE_NAME));
+        loadInfo.setText(getResources().getIdentifier("load_active_msg","string",MainActivity.PACKAGE_NAME));
+        playerButton = findViewById(getResources().getIdentifier("player_btn","id",MainActivity.PACKAGE_NAME));
 
         obtainOtpAndPlaybackInfo();
     }
@@ -46,10 +49,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.cast_menu, menu);
-        CastButtonFactory.setUpMediaRouteButton(getApplicationContext(),
-                menu,
-                R.id.media_route_menu_item);
+
         return true;
     }
 
@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            loadInfo.setText(R.string.load_done_msg);
+                            loadInfo.setText(getResources().getIdentifier("load_done_msg","string",MainActivity.PACKAGE_NAME));
                             playerButton.setEnabled(true);
                             playerButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
                                     "Error fetching otp and playbackInfo: " + e.getClass().getSimpleName(),
                                     Toast.LENGTH_LONG).show();
                             Log.e(TAG, "error fetching otp and playbackInfo");
-                            loadInfo.setText(R.string.load_error_msg);
+                            loadInfo.setText(getResources().getIdentifier("load_error_msg","string",MainActivity.PACKAGE_NAME));
                             loadInfo.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
