@@ -1,13 +1,11 @@
 package com.vdocipher.sampleapp.castdemo;
 
+import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import android.app.Activity;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -30,8 +28,8 @@ import com.vdocipher.aegis.media.Track;
 import com.vdocipher.aegis.player.VdoPlayer;
 import com.vdocipher.aegis.player.VdoPlayer.VdoInitParams;
 import com.vdocipher.aegis.player.VdoPlayerFragment;
+import com.vdocipher.aegis.player.VdoPlayerSupportFragment;
 
-import com.outsystemsenterprise.ubtmdev.R;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -53,9 +51,9 @@ public class CastVdoPlayerActivity extends Activity
 
     private long initTimeMs = 0;
 
-    private @Nullable VdoPlayer localPlayer;
-    private @Nullable CastVdoPlayer castPlayer;
-    private @Nullable VdoPlayer currentPlayer;
+    private   VdoPlayer localPlayer;
+    private  CastVdoPlayer castPlayer;
+    private   VdoPlayer currentPlayer;
 
     private CastContext castContext;
 
@@ -105,7 +103,10 @@ public class CastVdoPlayerActivity extends Activity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-
+        getMenuInflater().inflate(R.menu.cast_menu, menu);
+        CastButtonFactory.setUpMediaRouteButton(getApplicationContext(),
+                menu,
+                R.id.media_route_menu_item);
         return true;
     }
 
@@ -272,7 +273,7 @@ public class CastVdoPlayerActivity extends Activity
         }
     };
 
-    private void setCurrentPlayer(@Nullable VdoPlayer newPlayer) {
+    private void setCurrentPlayer(  VdoPlayer newPlayer) {
         if (currentPlayer == newPlayer) {
             return;
         }
@@ -304,7 +305,7 @@ public class CastVdoPlayerActivity extends Activity
         maybeLoadInitParams(newPlayer);
     }
 
-    private void maybeLoadInitParams(@Nullable VdoPlayer player) {
+    private void maybeLoadInitParams( VdoPlayer player) {
         if (player != null && initParams != null) {
             if (player == castPlayer) {
                 // join cast session, else load new params

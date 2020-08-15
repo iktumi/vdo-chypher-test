@@ -1,5 +1,6 @@
 package com.vdocipher.sampleapp.castdemo;
 
+import android.app.Activity;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,13 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.outsystemsenterprise.ubtmdev.R;
-
 
 import com.google.android.gms.cast.framework.CastButtonFactory;
 import com.google.android.gms.cast.framework.CastContext;
 import com.vdocipher.aegis.player.VdoPlayer;
-import android.app.Activity;
 
 import org.json.JSONException;
 
@@ -48,7 +46,10 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-
+        getMenuInflater().inflate(R.menu.cast_menu, menu);
+        CastButtonFactory.setUpMediaRouteButton(getApplicationContext(),
+                menu,
+                R.id.media_route_menu_item);
         return true;
     }
 
