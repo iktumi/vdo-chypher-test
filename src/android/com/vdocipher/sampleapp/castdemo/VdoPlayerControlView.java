@@ -16,7 +16,7 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.R;
+import com.outsystemsenterprise.ubtmdev.R;
 
 import com.vdocipher.aegis.cast.CastVdoPlayer;
 import com.vdocipher.aegis.media.ErrorDescription;

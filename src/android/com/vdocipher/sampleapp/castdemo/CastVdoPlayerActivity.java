@@ -31,7 +31,7 @@ import com.vdocipher.aegis.player.VdoPlayer;
 import com.vdocipher.aegis.player.VdoPlayer.VdoInitParams;
 import com.vdocipher.aegis.player.VdoPlayerFragment;
 
-import android.R;
+import com.outsystemsenterprise.ubtmdev.R;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
