@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.google.android.gms.cast.framework.CastButtonFactory;
 import com.google.android.gms.cast.framework.CastContext;
 import com.vdocipher.aegis.player.VdoPlayer;
-import com.outsystemsenterprise.ubtmdev.R;
+import android.R;
 
 import org.json.JSONException;
 

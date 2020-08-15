@@ -24,7 +24,7 @@ import com.vdocipher.aegis.player.VdoPlayer;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import com.outsystemsenterprise.ubtmdev.R;
+import android.R;
 
 /**
  * A view for controlling playback via a VdoPlayer.
